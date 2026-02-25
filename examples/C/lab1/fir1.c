@@ -7,8 +7,12 @@
 // in registers a0–a7 and return values are stored in a0.
 // extern void fir();
 
+// To compile: gcc -Icommon -o fir1 fir1.c
+// To run: ./fir1
+
 // Add two Q1.31 fixed point numbers
-/*int add_q31(int a, int b) {
+/*
+int add_q31(int a, int b) {
   return a+b;
 }*/
 
@@ -25,6 +29,7 @@ int mul_q31(int a, int b) {
 // n is the length of x, m is the length of c
 // y[i] = c[0]*x[i] + c[1]*x[i+1] + ... + c[m-1]*x[i+m-1]
 // inputs in Q1.31 format
+
 void fir(int x[], int c[], int y[], int n, int m);
 /*
 void fir(int x[], int c[], int y[], int n, int m) {
