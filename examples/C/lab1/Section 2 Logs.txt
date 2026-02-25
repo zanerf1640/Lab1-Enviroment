@@ -1,0 +1,21 @@
+*** Command line history for section 2 of lab 1 ***   
+ 1  git clone --recurse-submodule https://github.com/<zanerf1640>/Lab1-Enviroment
+    2  git clone --recurse-submodules https://github.com/zanerf1640/Lab1-Enviroment
+    3  ls
+    4  cd Lab1-Enviroment/
+    5  ls
+    6  source ./setup.
+    7  source ./setup.sh
+    8  cd examples
+    9  cd C
+   10  ls
+   11  cd hello/
+   12  ls
+   13  make.
+   14  ls
+   15  make.
+   16  sudo apt make
+   17  nano Makefile 
+   18  make
+   19  wsim --sim questa rv64gc --elf hello
+   20  wsim --sim questa rv64gb --elf hello

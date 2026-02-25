@@ -1,0 +1,84 @@
+   *** Command lines for section 3 of lab 1 ***
+
+   21  cd $WALLY/examples/asm/example
+   22  pwd
+   23  ls
+   24  riscv64-unknown-elf-gcc -o example -march=rv32i -mabi=ilp32 -mcmodel=medany -nostartfiles -T../../link/link.ld example.S
+   25  ls
+   26  riscv64-unknown-elf-objdump -D example > example.objdump
+   27  nano example
+   28  nano example.S
+   29  nano Makefile 
+   30  cat Makefile
+   31  nano Makefile 
+   32  make sim
+   33  make
+   34  make clean
+   35  nano Makefile 
+   36  make example
+   37  make clean
+   38  history
+   39  spike --isa=rv32i *programname*
+   40  cd $WALLY/examples/asm/sumtest
+   41  make
+   42  ls
+   43  make help
+   44  help make
+   45  info make
+   46  spike +signature=sumtest.signature.output sumtest
+   47  diff sumtest.signature.output sumtest.reference_output
+   48  ls
+   49  nano sumtest
+   50  nano sumtest.S
+   51  make clean
+   52  make
+   53  make sim
+   54  nano sumtest.objdump
+   55  riscv64-unknown-elf-readelf -a sumtest
+   56  cd $WALLY/examples/C/sum
+   57  ls
+   58  make
+   59  ls
+   60  nano sum
+   61  nano sum.objdump
+   62  nano sum.c
+   63  nano sum.objdump
+   64  spike sum
+   65  nano Makefile 
+   66  history
+
+
+
+*** Outputs of commands ***
+
+1. Command: cat Makefile: 
+example.objdump: example
+        riscv64-unknown-elf-objdump -D example > example.objdump
+
+example: example.S Makefile
+        riscv64-unknown-elf-gcc -o example -march=rv32i -mabi=ilp32 -mcmodel=medany \
+            -nostartfiles -T../../link/link.ld  example.S
+
+clean:
+        rm -f example example.objdump
+
+2. Command (example) make: 
+riscv64-unknown-elf-gcc -o example -march=rv32i -mabi=ilp32 -mcmodel=medany \
+    -nostartfiles -T../../link/link.ld  example.S
+riscv64-unknown-elf-objdump -D example > example.objdump
+
+3. Command (example) make clean:
+rm -f example example.objdump
+
+4. Command (sumtest) diff sumtest.signature.output sumtest.reference_output
+1c1,2
+< 000000000000001d000000000000000a
+---
+> 000000000000000A
+> 000000000000001D
+
+5. Command (sumtest) make sim:
+spike +signature=sumtest.signature.output +signature-granularity=8 sumtest
+diff --ignore-case sumtest.signature.output sumtest.reference_output || exit
+echo "Signature matches! Success!"
+Signature matches! Success!
